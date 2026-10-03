@@ -1098,6 +1098,20 @@ def back(message):
 # ЗАПУСК
 # =========================
 
+from flask import Flask
+from threading import Thread
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "🤖 Denko Bot is alive!"
+
+def run():
+    app.run(host="0.0.0.0", port=10000)
+
 print("🤖 Бот запущен!")
+
+Thread(target=run).start()
 
 bot.infinity_polling()
